@@ -55,7 +55,7 @@ Alternatively, you can configure Basic Authentication through the UI, as describ
 If your application uses Basic Authentication, you can setup Swagger to send the username and password to the server with each request to your API:
 
 ```ruby
-GrapeSwaggerRails.options.api_auth     = 'basic' # Or 'bearer' for OAuth
+GrapeSwaggerRails.options.api_auth     = 'basic' # Or 'bearer' for OAuth or 'custom' (see below)
 GrapeSwaggerRails.options.api_key_name = 'Authorization'
 GrapeSwaggerRails.options.api_key_type = 'header'
 ```
@@ -66,6 +66,17 @@ Now you can specify the username and password to your API in the Swagger "API ke
 
 The javascript that loads on the Swagger page automatically encodes the username and password and adds the authorization header to your API request.
 See the official Swagger documentation about [Custom Header Parameters](https://github.com/wordnik/swagger-ui#custom-header-parameters---for-basic-auth-etc)
+
+If your application uses an authorization scheme other than basic or bearer, you can specify the prefix using the 'custom' api_auth option:
+
+```ruby
+GrapeSwaggerRails.options.api_auth       = 'custom'
+GrapeSwaggerRails.options.api_key_name   = 'Authorization'
+GrapeSwaggerRails.options.api_key_type   = 'header'
+GrapeSwaggerRails.options.api_key_prefix = 'Token user_token='
+```
+
+This will result in an Authorization header of "Token user_token=api_key"
 
 ### API Token Authentication
 

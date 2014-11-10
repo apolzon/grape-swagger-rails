@@ -21,9 +21,10 @@ module GrapeSwaggerRails
 
     headers:              {},
 
-    api_auth:             '',        # 'basic' or 'bearer'
+    api_auth:             '',        # 'basic' or 'bearer' or 'custom'
     api_key_name:         'api_key', # 'Authorization'
     api_key_type:         'query',   # 'header'
+    api_key_prefix:       '',        # 'Token user_token='
 
     before_filter_proc:   nil # Proc used as a controller before filter
   )

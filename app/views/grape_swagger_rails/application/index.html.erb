@@ -38,7 +38,9 @@
         if (options.api_auth == 'basic') {
           key = "Basic " + Base64.encode(key);
         } else if (options.api_auth == 'bearer') {
-          key = "Bearer " + key
+          key = "Bearer " + key;
+        } else if (options.api_auth == 'custom') {
+          key = options.api_key_prefix + key;
         }
         window.authorizations.add("key", new ApiKeyAuthorization(options.api_key_name, key, options.api_key_type));
       } else {
